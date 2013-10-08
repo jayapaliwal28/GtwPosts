@@ -7,6 +7,8 @@
 ?>
 <h1><?php echo h($post['Post']['title']); ?></h1>
 
-<p><small>Created: <?php echo $post['Post']['created']; ?></small></p>
+<span class='post-date'><?php echo $this->Time->format($post['Post']['created'], '%Y-%m-%d'); ?></span>
 
 <p><?php echo h($post['Post']['body']); ?></p>
+
+<?php echo $this->GtwPost->indexBtn('<i class="icon-chevron-left"></i> Back'); ?>
