@@ -11,7 +11,7 @@
 
 <h1>Blog posts</h1>
 
-<p><?php echo $this->Html->link('Add Post', array('action' => 'add'), array('class' => 'btn btn-primary')); ?></p>
+<p><?php echo $this->Html->actionBtn('Add Post', 'add', null, 'btn-primary'); ?></p>
 
 <table class='table table-hoover table-striped datatable'>
     
@@ -30,7 +30,7 @@
             <td><?php echo $post['Post']['id']; ?></td>
             <td>
                 <?php 
-                    echo $this->GtwPost->viewLnk($post['Post']['id'], $post['Post']['title']); 
+                    echo $this->Html->actionLnk($post['Post']['title'], 'view', $post['Post']['id']); 
                 ?>
             </td>
             <td>
@@ -38,8 +38,8 @@
             </td>
             <td>
             <?php
-                echo $this->GtwPost->editLnk($post['Post']['id']);
-                echo $this->GtwPost->deleteLnk($post['Post']['id']);
+                echo $this->Html->actionIcon('icon-edit', 'edit', $post['Post']['id']);
+                echo $this->Html->actionIcon('icon-remove', 'delete', $post['Post']['id']);
             ?>
             </td>
         </tr>

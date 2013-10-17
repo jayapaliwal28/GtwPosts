@@ -36,16 +36,11 @@ echo $this->Form->create('Post', array(
                 'div' => false,
                 'class' => 'btn btn-primary'
             ));?>
-            <?php echo $this->Html->link('Cancel', 
-                array('action' => 'index'), 
-                array('class' => 'btn btn-default')
-            ); ?>
+            <?php echo $this->Html->actionBtn('Cancel', 'index'); ?>
         </div>
     </div>
     
     
 </fieldset>
 
-<?php
-echo $this->Form->end();
-?>
+<?php echo $this->Form->end(); ?>

@@ -11,4 +11,4 @@
 
 <p><?php echo h($post['Post']['body']); ?></p>
 
-<?php echo $this->GtwPost->indexBtn('<i class="icon-chevron-left"></i> Back'); ?>
+<?php echo $this->Html->actionIconBtn('icon-chevron-left', 'Back', 'index'); ?>
