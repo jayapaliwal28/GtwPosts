@@ -30,7 +30,7 @@
             <td><?php echo $post['Post']['id']; ?></td>
             <td>
                 <?php 
-                    echo $this->Html->actionLnk($post['Post']['title'], 'view', $post['Post']['id']); 
+                    echo $this->Html->actionLink($post['Post']['title'], 'view', $post['Post']['id']); 
                 ?>
             </td>
             <td>

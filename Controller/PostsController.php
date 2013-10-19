@@ -8,7 +8,10 @@
  
  class PostsController extends AppController {
     
-    public $helpers = array('GtwPosts.GtwPost', 'Time');
+    public $helpers = array(
+        'Time',
+        'Html' => array('className' => 'GtwUi.GtwHtml')
+    );
     
     public function beforeFilter() {
         parent::beforeFilter();
