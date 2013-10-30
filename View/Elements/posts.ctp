@@ -4,11 +4,16 @@
  * @author    Philippe Lafrance
  * @link      http://gintonicweb.com
  */
-
- $this->Helpers->load('GtwRequire.GtwRequire');
  $this->assign('active_nav', 'news-lnk');
 ?>
 
+<?php
+    $posts = $this->requestAction(array(
+            'plugin' => 'gtw_posts',
+            'controller' => 'posts', 
+            'action' => 'get'
+    ));
+?>
 <?php foreach ($posts as $post): ?>
 <h2>
     <small><?php echo $post['Post']['created']; ?></small> <br/>
@@ -18,3 +23,7 @@
 <hr/>
 
 <?php endforeach; ?>
+
+<?php echo $this->Paginator->pagination(array(
+    'ul' => 'pagination'
+)); ?>

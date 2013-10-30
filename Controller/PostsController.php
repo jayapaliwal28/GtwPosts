@@ -8,6 +8,7 @@
  
  class PostsController extends AppController {
     
+    public $components = array('Paginator');
     public $helpers = array(
         'Time',
         'Html' => array('className' => 'GtwUi.GtwHtml')
@@ -80,8 +81,18 @@
         }
     }
     
-    public function index() {
-        $this->set('posts', $this->Post->find('all'));
+    public function index($limit = 5) {
+        $this->paginate = array(
+            'limit' => $limit,
+            'order' => array(
+                'Post.created' => 'desc'
+            )
+        );
+        $this->set('posts', $this->paginate());
+    }
+    
+    public function get(){
+        return $this->Post->find('all');
     }
     
     public function admin_index() {
