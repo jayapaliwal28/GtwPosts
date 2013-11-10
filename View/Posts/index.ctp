@@ -4,9 +4,6 @@
  * @author    Philippe Lafrance
  * @link      http://gintonicweb.com
  */
-
- $this->Helpers->load('GtwRequire.GtwRequire');
- $this->assign('active_nav', 'news-lnk');
 ?>
 
 <?php foreach ($posts as $post): ?>
