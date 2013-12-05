@@ -1,5 +1,5 @@
 <?php 
-class GtwNewsSchema extends CakeSchema {
+class GtwPostsSchema extends CakeSchema {
 
 	public function before($event = array()) {
 		return true;
