@@ -5,10 +5,11 @@
  * @link      http://gintonicweb.com
  */
 ?>
-<h1><?php echo h($post['Post']['title']); ?></h1>
+<h2>
+    <small><?php echo $this->Time->format($post['Post']['created'], '%Y-%m-%d'); ?></small> <br/>
+    <?php echo $post['Post']['title']; ?>
+</h2>
 
-<span class='post-date'><?php echo $this->Time->format($post['Post']['created'], '%Y-%m-%d'); ?></span>
-
-<p><?php echo h($post['Post']['body']); ?></p>
+<p><?php echo $this->Html->textify($post['Post']['body']); ?></p>
 
 <?php echo $this->Html->actionIconBtn('icon-chevron-left', 'Back', 'index'); ?>

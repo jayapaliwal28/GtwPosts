@@ -9,10 +9,7 @@
  class PostsController extends AppController {
     
     public $components = array('Paginator');
-    public $helpers = array(
-        'Time',
-        'Html' => array('className' => 'GtwUi.GtwHtml')
-    );
+    public $helpers = array('Time', 'Text');
     
     public function beforeFilter() {
         parent::beforeFilter();
@@ -56,7 +53,10 @@
             throw new NotFoundException(__('Invalid post'));
         }
 
-        $post = $this->Post->findById($id);
+        $post = $this->Post->find('first',array(
+            'conditions' => array('Post.id' => $id),
+            'recursive' => -1
+        ));
         if (!$post) {
             throw new NotFoundException(__('Invalid post'));
         }
@@ -77,7 +77,12 @@
         }
 
         if (!$this->request->data) {
+            $selected = $this->Post->PostCategory->find('list',array(
+                'fields'=>array('id','name')
+            )) ;
+            $categories = $this->Post->PostCategory->find('all');
             $this->request->data = $post;
+            $this->set(compact('selected','categories'));
         }
     }
     
@@ -89,10 +94,6 @@
             )
         );
         $this->set('posts', $this->paginate());
-    }
-    
-    public function get(){
-        return $this->Post->find('all');
     }
     
     public function admin_index() {

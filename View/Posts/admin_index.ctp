@@ -6,10 +6,10 @@
  */
 
  $this->Helpers->load('GtwRequire.GtwRequire');
- $this->GtwRequire->req("ui/app/datatables");
+ $this->GtwRequire->req("ui/datatables");
 ?>
 
-<h1>Blog posts</h1>
+<h1>Posts</h1>
 
 <p><?php echo $this->Html->actionBtn('Add Post', 'add', null, 'btn-primary'); ?></p>
 
@@ -20,7 +20,7 @@
             <th>Id</th>
             <th>Title</th>
             <th>Created</th>
-            <th>Actions</th>
+            <th></th>
         </tr>
     </thead>
 
@@ -30,17 +30,16 @@
             <td><?php echo $post['Post']['id']; ?></td>
             <td>
                 <?php 
-                    echo $this->Html->actionLink($post['Post']['title'], 'view', $post['Post']['id']); 
+                    echo $this->Html->actionLink($post['Post']['title'], 'edit', $post['Post']['id']); 
                 ?>
             </td>
             <td>
                 <?php echo $post['Post']['created']; ?>
             </td>
             <td>
-            <?php
-                echo $this->Html->actionIcon('icon-edit', 'edit', $post['Post']['id']);
-                echo $this->Html->actionIcon('icon-remove', 'delete', $post['Post']['id']);
-            ?>
+            <span class="pull-right"><?php
+                    echo $this->Html->actionIcon('icon-remove', 'delete', $post['Post']['id']);
+                ?></span>
             </td>
         </tr>
         <?php endforeach; ?>

@@ -7,11 +7,14 @@
 ?>
 
 <?php foreach ($posts as $post): ?>
-<h2>
-    <small><?php echo $post['Post']['created']; ?></small> <br/>
-    <?php echo $this->Html->actionLink($post['Post']['title'], 'view', $post['Post']['id']); ?>
-</h2>
-<p><?php echo $post['Post']['body']; ?></p>
-<hr/>
-
+    
+    <h2>
+        <small><?php echo $this->Time->format( 'Y-m-d', $post['Post']['created'] ); ?></small> <br/>
+        <?php echo $post['Post']['title']; ?>
+    </h2>
+    
+    <p><?php echo $this->Html->textify($post['Post']['body'], 700); ?></p>
+    <p><?php echo $this->Html->actionBtn('Read more...', 'view', $post['Post']['id']); ?></p>
+    <hr/>
+    
 <?php endforeach; ?>
