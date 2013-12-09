@@ -17,6 +17,11 @@
     }
     
     public function add() {
+        $post_categories = $this->Post->PostCategory->find('list',array(
+            'fields'=>array('id','name')
+        ));
+        $this->set(compact('post_categories'));
+            
         if ($this->request->is('post')) {
             $this->Post->create();
             if ($this->Post->save($this->request->data)) {
@@ -55,7 +60,6 @@
 
         $post = $this->Post->find('first',array(
             'conditions' => array('Post.id' => $id),
-            'recursive' => -1
         ));
         if (!$post) {
             throw new NotFoundException(__('Invalid post'));
@@ -77,12 +81,11 @@
         }
 
         if (!$this->request->data) {
-            $selected = $this->Post->PostCategory->find('list',array(
+            $post_categories = $this->Post->PostCategory->find('list',array(
                 'fields'=>array('id','name')
-            )) ;
-            $categories = $this->Post->PostCategory->find('all');
+            ));
+            $this->set(compact('post_categories'));
             $this->request->data = $post;
-            $this->set(compact('selected','categories'));
         }
     }
     
