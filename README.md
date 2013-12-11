@@ -15,13 +15,15 @@ CakePHP 2.4.0+
 
 ## Installation
 
-Load the plugin by adding this line to app/Config/bootstrap.php
+Load the plugin and make sure you parse the RSS extension by adding these lines to `app/Config/bootstrap.php`
 
     CakePlugin::load('GtwUi');
+    Router::parseExtensions('rss');
     
 In the same file, give a title to your Posts page
 
     Configure::write(array('GtwPosts.MainTitle' => 'Welcome to my blog'));
+    
     
 ## Copyright and license
 Author: Philippe Lafrance    

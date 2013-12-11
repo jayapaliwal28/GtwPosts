@@ -8,7 +8,7 @@
  
  class PostsController extends AppController {
     
-    public $components = array('Paginator');
+    public $components = array('Paginator', 'RequestHandler');
     public $helpers = array('Time', 'Text');
     
     public function beforeFilter() {
@@ -89,9 +89,19 @@
         }
     }
     
-    public function index($limit = 5) {
+    public function index() {
+
+        if ($this->RequestHandler->isRss() ) {
+            $this->layout = 'GtwPosts'; 
+            $posts = $this->Post->find(
+                'all',
+                array('limit' => 20, 'order' => 'Post.created DESC')
+            );
+            return $this->set(compact('posts'));
+        }
+        
         $this->paginate = array(
-            'limit' => $limit,
+            'limit' => 5,
             'order' => array(
                 'Post.created' => 'desc'
             )
