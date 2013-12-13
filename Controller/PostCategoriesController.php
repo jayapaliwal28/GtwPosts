@@ -6,7 +6,15 @@
  */
  
  class PostCategoriesController extends AppController {
- 
+    
+    public $components = array('Paginator', 'RequestHandler');
+    
+     public $paginate = array(
+        'order' => array(
+            'Post.created' => 'desc'
+        )
+    );
+    
     public function add() {
         $this->PostCategory->create();
         if ($this->PostCategory->save($this->request->data)) {
@@ -75,6 +83,43 @@
         ));
         $this->set('categories', $categories);
     }
- 
+    
+    public function view($slug) {
+        $category = $this->PostCategory->findBySlug($slug);
+        $this->Paginator->settings = array('Post' => array(
+            'joins' => array(
+                array(
+                    'table' => 'posts_post_categories', 
+                    'alias' => 'PostsPostCategory', 
+                    'type' => 'inner',  
+                    'conditions'=> array('PostsPostCategory.post_id = Post.id') 
+                ), 
+                array( 
+                    'table' => 'post_categories',
+                    'alias' => 'PostCategory', 
+                    'type' => 'inner',  
+                    'conditions'=> array( 
+                        'PostCategory.id = PostsPostCategory.post_category_id', 
+                        'PostCategory.slug' => $slug
+                    )
+                )
+            )
+        ));
+        
+        $posts = $this->Paginator->paginate('Post');
+        $this->set(compact('posts', 'category'));
+    }
+    
+    public function feed($slug) {
+        if ($this->RequestHandler->isRss() ) {
+            $this->layout = 'GtwPosts';
+            $posts = $this->PostCategory->find('first', array(
+                'conditions' => array(
+                    'PostCategory.slug LIKE' => $slug
+                )
+            ))['Post'];
+            return $this->set(compact('posts'));
+        }
+    }
  
  }
