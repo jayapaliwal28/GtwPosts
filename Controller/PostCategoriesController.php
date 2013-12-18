@@ -16,22 +16,24 @@
     );
     
     public function add() {
-        $this->PostCategory->create();
-        if ($this->PostCategory->save($this->request->data)) {
-            $this->Session->setFlash('The post category has been created successfully', 'alert', array(
-                'plugin' => 'BoostCake',
-                'class' => 'alert-success'
-            ));
-            $this->redirect(array(
-                'plugin' => 'gtw_posts',
-                'controller' => 'post_categories',
-                'action' => 'index'
-            ));
-        } else {
-            $this->Session->setFlash('Post category could not be created.', 'alert', array(
-                'plugin' => 'BoostCake',
-                'class' => 'alert-danger'
-            ));
+        if ($this->request->is('post')) {
+            $this->PostCategory->create();
+            if ($this->PostCategory->save($this->request->data)) {
+                $this->Session->setFlash('The post category has been created successfully', 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-success'
+                ));
+                $this->redirect(array(
+                    'plugin' => 'gtw_posts',
+                    'controller' => 'post_categories',
+                    'action' => 'index'
+                ));
+            } else {
+                $this->Session->setFlash('Post category could not be created.', 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-danger'
+                ));
+            }
         }
     }
     

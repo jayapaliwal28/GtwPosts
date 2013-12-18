@@ -4,7 +4,11 @@
  * @author    Philippe Lafrance
  * @link      http://gintonicweb.com
  */
+ 
+ $this->Helpers->load('GtwRequire.GtwRequire');
+ echo $this->GtwRequire->req('posts/wysiwyg');
 ?>
+
 <div class="row">
     <div class="col-md-12">
         <h1>Edit Post</h1>
