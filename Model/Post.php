@@ -18,4 +18,14 @@ class Post extends AppModel {
             )
     );
     
+    public function beforeSave($options = array()) {
+        parent::beforeSave($options);
+        if(!$this->data['Post']['slug']){
+            $this->data['Post']['slug'] = $this->data['Post']['title'];
+        }
+        
+        $this->data['Post']['slug'] = Inflector::slug($this->data['Post']['slug']);
+        return true;
+    }
+    
 }

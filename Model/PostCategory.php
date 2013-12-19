@@ -18,4 +18,13 @@ class PostCategory extends AppModel {
             )
     );
     
+    public function beforeSave($options = array()) {
+        parent::beforeSave($options);
+        if(!$this->data['PostCategory']['slug']){
+            $this->data['PostCategory']['slug'] = $this->data['PostCategory']['title'];
+        }
+        $this->data['PostCategory']['slug'] = Inflector::slug($this->data['PostCategory']['slug']);
+        return true;
+    }
+    
 }

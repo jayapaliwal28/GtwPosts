@@ -15,6 +15,14 @@
         )
     );
     
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('view', 'index');
+        if ($this->Auth->user('role') == 'admin'){
+            $this->Auth->allow();
+        }
+    }
+    
     public function add() {
         if ($this->request->is('post')) {
             $this->PostCategory->create();

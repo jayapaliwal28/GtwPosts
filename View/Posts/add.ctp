@@ -36,9 +36,15 @@
         ?>
     </div>
     <div class="col-md-3">
-        <?php echo $this->Form->input('PostCategory', array(
-            'options' => $post_categories,
-        )); ?>
+        <?php 
+            echo $this->Form->input('slug', array(
+                'label' => 'Slug',
+                'placeholder' => 'Post title'
+            ));
+            echo $this->Form->input('PostCategory', array(
+                'options' => $post_categories,
+            ));
+        ?>
     </div>
 </div>
 <div class="row">
