@@ -124,4 +124,13 @@
         }
         $this->set('post', $post);
     }
+    
+    public function display($slug) {
+        $post = $this->Post->findBySlug($slug);
+        if (!$post) {
+            throw new NotFoundException(__('Invalid post'));
+        }
+        $this->set('post', $post);
+        $this->render('view');
+    }
 }
