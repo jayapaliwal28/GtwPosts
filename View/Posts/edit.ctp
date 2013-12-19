@@ -31,7 +31,7 @@
             ));
             echo $this->Form->input('body', array(
                 'label' => 'Body',
-                'rows' => '3',
+                'rows' => '30',
                 'placeholder' => 'Post body'
             ));
         ?>

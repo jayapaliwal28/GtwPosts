@@ -1,0 +1,19 @@
+{
+    "name": "phillaf/gtw_posts",
+    "type": "cakephp-plugin",
+    "description": "Blog/news/post plugin based on Gintonic Web plugins for CakePHP",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Philippe Lafrance",
+            "email": "phil.laf@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.0",
+        "composer/installers": "*",
+        "slywalker/boost_cake": "*",
+        "phillaf/gtw_users": "*"
+    }
+}

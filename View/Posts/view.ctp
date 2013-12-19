@@ -10,6 +10,6 @@
     <?php echo $post['Post']['title']; ?>
 </h2>
 
-<p><?php echo $this->Html->textify($post['Post']['body']); ?></p>
+<p><?php echo $post['Post']['body']; ?></p>
 
 <?php echo $this->Html->actionIconBtn('icon-chevron-left', 'Back', 'index'); ?>

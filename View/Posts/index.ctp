@@ -13,7 +13,13 @@
         <?php echo $post['Post']['title']; ?>
     </h2>
     
-    <p><?php echo $this->Html->textify($post['Post']['body'], 700); ?></p>
+    <p>
+        <?php echo $this->Text->truncate( $post['Post']['body'], 700, array(
+            'ellipsis' => '...',
+            'exact' => false,
+            'html' => true
+        )); ?>
+    </p>
     <p><?php echo $this->Html->actionBtn('Read more...', 'view', $post['Post']['id']); ?></p>
     <hr/>
     

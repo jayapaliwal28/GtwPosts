@@ -4,6 +4,9 @@
  * @author    Philippe Lafrance
  * @link      http://gintonicweb.com
  */
+ 
+ $this->Helpers->load('GtwRequire.GtwRequire');
+ echo $this->GtwRequire->req('posts/wysiwyg');
 ?>
 <div class="row">
     <div class="col-md-12">
@@ -27,7 +30,7 @@
             ));
             echo $this->Form->input('body', array(
                 'label' => 'Body',
-                'rows' => '3',
+                'rows' => '30',
                 'placeholder' => 'Post body'
             ));
         ?>
