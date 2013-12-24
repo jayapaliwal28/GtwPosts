@@ -93,7 +93,7 @@
     }
     
     public function index() {
-
+        
         if ($this->RequestHandler->isRss() ) {
             $this->layout = 'GtwPosts'; 
             $posts = $this->Post->find(
@@ -135,5 +135,15 @@
         }
         $this->set('post', $post);
         $this->render('view');
+    }
+    
+    public function getLatest() {
+        $this->layout = false;
+        $this->autoRender = false;
+        $post = $this->Post->find(
+            'first',
+            array('order' => 'Post.created DESC')
+        );
+        return $post;
     }
 }
