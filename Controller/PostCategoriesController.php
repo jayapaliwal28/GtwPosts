@@ -17,7 +17,7 @@
     
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('view', 'index');
+        $this->Auth->allow('view', 'index', 'feed', 'display');
         if ($this->Auth->user('role') == 'admin'){
             $this->Auth->allow();
         }
