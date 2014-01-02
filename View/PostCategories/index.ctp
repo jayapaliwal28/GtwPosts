@@ -42,7 +42,7 @@ $this->GtwRequire->req("ui/datatables");
                             <td><?php echo count($category['Post']); ?></td>
                             <td>
                                 <span class="pull-right">
-                                    <?php echo $this->Html->actionIcon('icon-remove', 'delete', $category['PostCategory']['id']); ?>
+                                    <?php echo $this->Html->actionIcon('fa fa-times', 'delete', $category['PostCategory']['id']); ?>
                                 </span>
                             </td>
                         </tr>

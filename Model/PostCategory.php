@@ -23,7 +23,7 @@ class PostCategory extends AppModel {
         if(!$this->data['PostCategory']['slug']){
             $this->data['PostCategory']['slug'] = $this->data['PostCategory']['title'];
         }
-        $this->data['PostCategory']['slug'] = Inflector::slug($this->data['PostCategory']['slug']);
+        $this->data['PostCategory']['slug'] = Inflector::slug(strtolower($this->data['PostCategory']['slug']));
         return true;
     }
     

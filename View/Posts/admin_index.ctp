@@ -38,7 +38,7 @@
             </td>
             <td>
             <span class="pull-right"><?php
-                    echo $this->Html->actionIcon('icon-remove', 'delete', $post['Post']['id']);
+                    echo $this->Html->actionIcon('fa fa-times', 'delete', $post['Post']['id']);
                 ?></span>
             </td>
         </tr>

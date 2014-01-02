@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <?php echo $this->Form->create('PostCategory', array('action' => 'add'));?>
+        <?php echo $this->Form->create('PostCategory', array('action' => 'edit'));?>
     
             <div class="form-group">
                 <label for="post-cat-name">Name</label>
