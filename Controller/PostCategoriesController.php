@@ -17,7 +17,7 @@
     
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('view', 'index', 'feed', 'display');
+        $this->Auth->allow('view', 'index', 'feed', 'display', 'getLatest');
         if ($this->Auth->user('role') == 'admin'){
             $this->Auth->allow();
         }
@@ -113,7 +113,8 @@
                         'PostCategory.slug' => $slug
                     )
                 )
-            )
+            ),
+            'order' => 'Post.created DESC'
         ));
         
         $posts = $this->Paginator->paginate('Post');
@@ -130,6 +131,23 @@
             ))['Post'];
             return $this->set(compact('posts'));
         }
+    }
+    
+        
+    public function getLatest($limit, $category) {
+        $this->layout = false;
+        $this->autoRender = false;
+        
+        $posts = $this->PostCategory->find('all',array(
+            'conditions' => array('PostCategory.slug' => $category),
+            'contain' => array(
+                'Post' => array(
+                    'limit' => $limit
+                )
+            )
+        ));
+        
+        return $posts[0]['Post'];
     }
  
  }

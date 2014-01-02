@@ -96,10 +96,10 @@
         
         if ($this->RequestHandler->isRss() ) {
             $this->layout = 'GtwPosts'; 
-            $posts = $this->Post->find(
-                'all',
-                array('limit' => 20, 'order' => 'Post.created DESC')
-            );
+            $posts = $this->Post->find('all', array(
+                'limit' => 20, 
+                'order' => 'Post.created DESC'
+            ));
             return $this->set(compact('posts'));
         }
         
@@ -137,13 +137,14 @@
         $this->render('view');
     }
     
-    public function getLatest() {
+    public function getLatest($limit) {
         $this->layout = false;
         $this->autoRender = false;
-        $post = $this->Post->find(
-            'first',
-            array('order' => 'Post.created DESC')
-        );
-        return $post;
+        
+        $posts = $this->Post->find('all', array(
+            'order' => 'Post.created DESC',
+            'limit' => $limit
+        ));
+        return $posts;
     }
 }

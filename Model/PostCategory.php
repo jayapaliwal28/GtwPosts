@@ -15,6 +15,7 @@ class PostCategory extends AppModel {
                 'foreignKey' => 'post_category_id',
                 'associationForeignKey' => 'post_id',
                 'unique' => true,
+                'order' => 'Post.created DESC'
             )
     );
     
