@@ -1,4 +1,6 @@
 <?php
+Router::parseExtensions('rss');
+
 Router::connect('/posts', array('plugin' => 'gtw_posts', 'controller' => 'posts'));
 Router::connect('/posts/index/*', array('plugin' => 'gtw_posts', 'controller' => 'posts'));
 Router::connect('/posts/admin/*', array('plugin' => 'gtw_posts', 'controller' => 'posts', 'action' => 'admin_index'));

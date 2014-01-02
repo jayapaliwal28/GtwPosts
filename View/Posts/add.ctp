@@ -48,7 +48,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col col-md-12">
+    <div class="col-md-12">
         <?php echo $this->Form->submit('Save Post', array(
             'div' => false,
             'class' => 'btn btn-primary'
