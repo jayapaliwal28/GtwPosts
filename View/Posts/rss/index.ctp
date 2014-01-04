@@ -3,7 +3,7 @@
 $this->set('channelData', array(
     'title' => "Most Recent Posts",
     'link' => $this->Html->url('/', true),
-    'description' => "Most recent posts.",
+    'description' => Configure::read('Gtw.Title'),
     'language' => 'en-us'
 ));
 
