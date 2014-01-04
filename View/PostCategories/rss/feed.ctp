@@ -1,6 +1,6 @@
 <?php
 $this->set('channelData', array(
-    'title' => "Most Recent Posts",
+    'title' => Configure::read('Gtw.Title'),
     'link' => $this->Html->url('/', true),
     'description' => "Most recent posts.",
     'language' => 'en-us'

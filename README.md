@@ -20,9 +20,9 @@ Load the plugin and make sure you parse the RSS extension by adding these lines 
     CakePlugin::load('GtwUi');
     Router::parseExtensions('rss');
     
-In the same file, give a title to your Posts page
+In the same file, give a title to your Website
 
-    Configure::write(array('GtwPosts.MainTitle' => 'Welcome to my blog'));
+    Configure::write(array('Gtw.Title' => 'Napoleon Dynamite'));
     
     
 ## Copyright and license
