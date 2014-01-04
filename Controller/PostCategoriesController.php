@@ -128,7 +128,10 @@
                 'conditions' => array(
                     'PostCategory.slug LIKE' => $slug
                 )
-            ))['Post'];
+            ));
+            if ($posts){
+                $posts = $posts['Post'];
+            }
             return $this->set(compact('posts'));
         }
     }
