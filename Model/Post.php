@@ -23,7 +23,6 @@ class Post extends AppModel {
         if(!$this->data['Post']['slug']){
             $this->data['Post']['slug'] = $this->data['Post']['title'];
         }
-        
         $this->data['Post']['slug'] = Inflector::slug(strtolower($this->data['Post']['slug']));
         return true;
     }
