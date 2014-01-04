@@ -124,14 +124,7 @@
     public function feed($slug) {
         if ($this->RequestHandler->isRss() ) {
             $this->layout = 'GtwPosts';
-            $posts = $this->PostCategory->find('first', array(
-                'conditions' => array(
-                    'PostCategory.slug LIKE' => $slug
-                )
-            ));
-            if ($posts){
-                $posts = $posts['Post'];
-            }
+            $posts = $this->PostCategory->findBySlug($slug);
             return $this->set(compact('posts'));
         }
     }

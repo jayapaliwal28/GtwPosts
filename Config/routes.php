@@ -11,9 +11,10 @@ Router::connect('/posts/view/*', array('plugin' => 'gtw_posts', 'controller' => 
 Router::connect('/posts/*', array('plugin' => 'gtw_posts', 'controller' => 'posts', 'action' => 'display'));
 
 Router::connect('/categories', array('plugin' => 'gtw_posts', 'controller' => 'post_categories'));
-Router::connect('/categories/index/*', array('plugin' => 'gtw_posts', 'controller' => 'post_categories'));
-Router::connect('/categories/admin/*', array('plugin' => 'gtw_posts', 'controller' => 'post_categories', 'action' => 'admin_index'));
-Router::connect('/categories/edit/*', array('plugin' => 'gtw_posts', 'controller' => 'post_categories', 'action' => 'edit'));
 Router::connect('/categories/add/*', array('plugin' => 'gtw_posts', 'controller' => 'post_categories', 'action' => 'add'));
+Router::connect('/categories/admin/*', array('plugin' => 'gtw_posts', 'controller' => 'post_categories', 'action' => 'admin_index'));
 Router::connect('/categories/delete/*', array('plugin' => 'gtw_posts', 'controller' => 'post_categories', 'action' => 'delete'));
+Router::connect('/categories/edit/*', array('plugin' => 'gtw_posts', 'controller' => 'post_categories', 'action' => 'edit'));
+Router::connect('/categories/feed/*', array('plugin' => 'gtw_posts', 'controller' => 'post_categories', 'action' => 'feed'));
+Router::connect('/categories/index/*', array('plugin' => 'gtw_posts', 'controller' => 'post_categories'));
 Router::connect('/categories/*', array('plugin' => 'gtw_posts', 'controller' => 'post_categories', 'action' => 'view'));

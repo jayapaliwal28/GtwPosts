@@ -2,23 +2,14 @@
 $this->set('channelData', array(
     'title' => Configure::read('Gtw.Title'),
     'link' => $this->Html->url('/', true),
-    'description' => Configure::read('Gtw.Title'),
+    'description' => $posts['PostCategory']['name'],
     'language' => 'en-us'
 ));
 
-foreach ($posts as $post) {
+foreach ($posts['Post'] as $post) {
     $postTime = strtotime($post['created']);
 
-    $postLink = array(
-        'controller' => 'posts',
-        'action' => 'view',
-        /*'year' => date('Y', $postTime),
-        'month' => date('m', $postTime),
-        'day' => date('d', $postTime),*/
-        // TODO
-        //$post['Post']['slug']
-        $post['id']
-    );
+    $postLink = Router::url('/', true). 'posts/' . $post['slug'];
 
     // Remove & escape any HTML to make sure the feed content will validate.
     $bodyText = h(strip_tags($post['body']));

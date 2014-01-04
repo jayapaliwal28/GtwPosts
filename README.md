@@ -22,8 +22,10 @@ Load the plugin and make sure you parse the RSS extension by adding these lines 
     
 In the same file, give a title to your Website
 
-    Configure::write(array('Gtw.Title' => 'Napoleon Dynamite'));
-    
+    Configure::write(array(
+        'Gtw.Title' => 'Napoleon Dynamite',
+        'Gtw.Description' => 'A blog about being alone'
+    ));
     
 ## Copyright and license
 Author: Philippe Lafrance    

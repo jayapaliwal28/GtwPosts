@@ -1,25 +1,16 @@
 <?php
 
 $this->set('channelData', array(
-    'title' => "Most Recent Posts",
+    'title' => Configure::read('Gtw.Title'),
     'link' => $this->Html->url('/', true),
-    'description' => Configure::read('Gtw.Title'),
+    'description' => Configure::read('Gtw.Description'),
     'language' => 'en-us'
 ));
 
 foreach ($posts as $post) {
     $postTime = strtotime($post['Post']['created']);
 
-    $postLink = array(
-        'controller' => 'posts',
-        'action' => 'view',
-        /*'year' => date('Y', $postTime),
-        'month' => date('m', $postTime),
-        'day' => date('d', $postTime),*/
-        // TODO
-        //$post['Post']['slug']
-        $post['Post']['id']
-    );
+    $postLink = Router::url('/', true). 'posts/' . $post['Post']['slug'];
 
     // Remove & escape any HTML to make sure the feed content will validate.
     $bodyText = h(strip_tags($post['Post']['body']));
