@@ -24,6 +24,9 @@
     }
     
     public function add() {
+        $titleForLayout = 'Add post';
+        $this->set(compact('titleForLayout'));
+        
         if ($this->request->is('post')) {
             $this->PostCategory->create();
             if ($this->PostCategory->save($this->request->data)) {
@@ -83,6 +86,8 @@
             }
         } else {
             $this->request->data = $this->PostCategory->read();
+            $titleForLayout = 'Edit : ' . $this->request->data['PostCategory']['name'];
+            $this->set(compact('titleForLayout'));
         }
     }
     
@@ -91,11 +96,13 @@
             'all', array(
                 'order'=>array('PostCategory.name ASC'),
         ));
-        $this->set('categories', $categories);
+        $titleForLayout = 'Categories index';
+        $this->set(compact('categories', 'titleForLayout'));
     }
     
     public function view($slug) {
         $category = $this->PostCategory->findBySlug($slug);
+        $titleForLayout = $category['PostCategory']['name'].' - '.$category['PostCategory']['description'];
         $this->Paginator->settings = array('Post' => array(
             'joins' => array(
                 array(
@@ -118,7 +125,7 @@
         ));
         
         $posts = $this->Paginator->paginate('Post');
-        $this->set(compact('posts', 'category'));
+        $this->set(compact('posts', 'category', 'titleForLayout'));
     }
     
     public function feed($slug) {

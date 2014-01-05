@@ -20,6 +20,8 @@
     }
     
     public function add() {
+        $titleForLayout = 'Add a post';
+        $this->set(compact('titleForLayout'));
         $post_categories = $this->Post->PostCategory->find('list',array(
             'fields'=>array('id','name')
         ));
@@ -68,6 +70,8 @@
             throw new NotFoundException(__('Invalid post'));
         }
 
+        $titleForLayout = 'Edit: ' . $post['Post']['title'];
+        $this->set(compact('titleForLayout'));
         if ($this->request->is('post') || $this->request->is('put')) {
             $this->Post->id = $id;
             if ($this->Post->save($this->request->data)) {
@@ -109,6 +113,8 @@
                 'Post.created' => 'desc'
             )
         );
+        $titleForLayout = Configure::read('Gtw.Title').' - '.Configure::read('Gtw.Description');
+        $this->set(compact('titleForLayout'));
         $this->set('posts', $this->paginate());
     }
     
@@ -125,7 +131,8 @@
         if (!$post) {
             throw new NotFoundException(__('Invalid post'));
         }
-        $this->set('post', $post);
+        $titleForLayout = $post['Post']['title'];
+        $this->set(compact('post', 'titleForLayout'));
     }
     
     public function display($slug) {
@@ -133,7 +140,8 @@
         if (!$post) {
             throw new NotFoundException(__('Invalid post'));
         }
-        $this->set('post', $post);
+        $titleForLayout = $post['Post']['title'];
+        $this->set(compact('post', 'titleForLayout'));
         $this->render('view');
     }
     
