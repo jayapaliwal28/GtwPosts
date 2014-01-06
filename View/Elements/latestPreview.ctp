@@ -28,6 +28,5 @@
     <p>
         <a class="btn btn-default" href="/posts/<?php echo $post['Post']['slug']?>">Read more...</a>
     </p>
-    <hr/>
     
 <?php endforeach; ?>
