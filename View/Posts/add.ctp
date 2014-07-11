@@ -44,6 +44,11 @@
             echo $this->Form->input('PostCategory', array(
                 'options' => $post_categories,
             ));
+            echo $this->Form->input('user_id', array(
+                'label' => 'Author',
+                'options' => $authors,
+                'default' => $this->Session->read('Auth.User.id')
+            ));
         ?>
     </div>
 </div>

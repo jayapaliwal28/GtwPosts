@@ -6,7 +6,9 @@
  */
 
 class Post extends AppModel {
-    
+
+    public $belongsTo = array('User');
+
     public $hasAndBelongsToMany = array(
         'PostCategory' =>
             array(

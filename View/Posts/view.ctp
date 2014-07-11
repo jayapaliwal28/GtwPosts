@@ -6,7 +6,7 @@
  */
 ?>
 <h2>
-    <small><?php echo $this->Time->format($post['Post']['created'], '%Y-%m-%d'); ?></small> <br/>
+    <small><?php echo $this->Time->format($post['Post']['created'], '%Y-%m-%d'); ?> By <?php echo $post['User']['first']." ".$post['User']['last']; ?></small> <br/>
     <?php echo $post['Post']['title']; ?>
 </h2>
 

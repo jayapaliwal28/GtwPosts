@@ -9,7 +9,7 @@
 <?php foreach ($posts as $post): ?>
     
     <h2>
-        <small><?php echo $this->Time->format( 'Y-m-d', $post['Post']['created'] ); ?></small> <br/>
+        <small><?php echo $this->Time->format( 'Y-m-d', $post['Post']['created'] ); ?> By <?php echo $post['User']['first']." ".$post['User']['last'];?></small> <br/>
         <a href="/posts/<?php echo $post['Post']['slug']?>"><?php echo $post['Post']['title'] ?></a>
     </h2>
     

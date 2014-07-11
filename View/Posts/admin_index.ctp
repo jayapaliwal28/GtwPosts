@@ -19,6 +19,7 @@
         <tr>
             <th>Id</th>
             <th>Title</th>
+            <th>Author</th>
             <th>Created</th>
             <th></th>
         </tr>
@@ -33,6 +34,7 @@
                     echo $this->Html->actionLink($post['Post']['title'], 'edit', $post['Post']['id']); 
                 ?>
             </td>
+            <td><?php echo $post['User']['first']." ".$post['User']['last']; ?></td>
             <td>
                 <?php echo $post['Post']['created']; ?>
             </td>

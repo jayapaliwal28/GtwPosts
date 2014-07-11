@@ -22,8 +22,14 @@
         $post_categories = $this->Post->PostCategory->find('list',array(
             'fields'=>array('id','name')
         ));
-        $this->set(compact('post_categories'));
-            
+        $this->Post->User->virtualFields = array('name' => 'CONCAT(first, " ", last)');
+        $authors = $this->Post->User->find('list',array(
+            'fields'=>array('id', 'name'),
+            'conditions' => array('role' => 'admin')
+        ));
+        $this->set(compact('post_categories','authors'));
+        
+        
         if ($this->request->is('post')) {
             $this->Post->create();
             if ($this->Post->save($this->request->data)) {
@@ -41,12 +47,8 @@
     }
     
     public function delete($id) {
-        if ($this->request->is('get')) {
-            throw new MethodNotAllowedException();
-        }
-
         if ($this->Post->delete($id)) {
-            $this->Session->setFlash(__('The post with id: %s has been deleted.'), 'alert', array(
+            $this->Session->setFlash(__('The post has been deleted.'), 'alert', array(
                 'plugin' => 'BoostCake',
                 'class' => 'alert-success'
             ));
@@ -88,7 +90,12 @@
             $post_categories = $this->Post->PostCategory->find('list',array(
                 'fields'=>array('id','name')
             ));
-            $this->set(compact('post_categories'));
+            $this->Post->User->virtualFields = array('name' => 'CONCAT(first, " ", last)');
+            $authors = $this->Post->User->find('list',array(
+                'fields'=>array('id', 'name'),
+                'conditions' => array('role' => 'admin')
+            ));
+            $this->set(compact('post_categories', 'authors'));
             $this->request->data = $post;
         }
     }

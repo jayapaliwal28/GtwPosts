@@ -44,6 +44,10 @@
             echo $this->Form->input('PostCategory', array(
                 'options' => $post_categories,
             ));
+            echo $this->Form->input('user_id', array(
+                'label' => 'Author',
+                'options' => $authors,
+            ));
         ?>
     </div>
 </div>
