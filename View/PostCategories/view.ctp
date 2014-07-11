@@ -4,8 +4,10 @@
  * @author    Philippe Lafrance
  * @link      http://gintonicweb.com
  */
+
+$this->assign('postsnav-active', 'posts-'.$category['PostCategory']['slug']);
 ?>
-<h1><span class="pull-right"><?php echo $category['PostCategory']['name']?></span></h1>
+<h1><span class="pull-right"><?php echo $category['PostCategory']['name']; ?></span></h1>
 <div class="clearfix"></div>
 <?php foreach ($posts as $post): ?>
     

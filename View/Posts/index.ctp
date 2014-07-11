@@ -4,6 +4,8 @@
  * @author    Philippe Lafrance
  * @link      http://gintonicweb.com
  */
+
+$this->assign('postsnav-active', 'posts-all');
 ?>
 
 <?php foreach ($posts as $post): ?>

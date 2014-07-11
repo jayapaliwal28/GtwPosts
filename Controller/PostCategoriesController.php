@@ -17,7 +17,7 @@
     
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('view', 'feed', 'display', 'getLatest');
+        $this->Auth->allow('list', 'view', 'feed', 'display', 'getLatest');
     }
     
     public function add() {
@@ -95,6 +95,13 @@
         ));
         $titleForLayout = 'Categories index';
         $this->set(compact('categories', 'titleForLayout'));
+    }
+
+    public function listall(){
+        return $this->PostCategory->find(
+            'all', array(
+                'order'=>array('PostCategory.name ASC'),
+        ));
     }
     
     public function view($slug) {
