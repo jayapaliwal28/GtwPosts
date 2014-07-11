@@ -101,6 +101,7 @@
         $category = $this->PostCategory->findBySlug($slug);
         $titleForLayout = $category['PostCategory']['name'].' - '.$category['PostCategory']['description'];
         $this->Paginator->settings = array('Post' => array(
+            'fields' => array('User.*', 'Post.*'),
             'joins' => array(
                 array(
                     'table' => 'posts_post_categories', 
@@ -115,6 +116,14 @@
                     'conditions'=> array( 
                         'PostCategory.id = PostsPostCategory.post_category_id', 
                         'PostCategory.slug' => $slug
+                    )
+                ),
+                array( 
+                    'table' => 'users',
+                    'alias' => 'User', 
+                    'type' => 'inner',  
+                    'conditions'=> array( 
+                        'User.id = Post.user_id'
                     )
                 )
             ),
