@@ -17,7 +17,7 @@
     
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('list', 'view', 'feed', 'display', 'getLatest');
+        $this->Auth->allow('menu', 'view', 'feed', 'display', 'getLatest');
     }
     
     public function add() {
@@ -89,6 +89,18 @@
     }
     
     public function index() {
+        $categories = $this->PostCategory->find(
+            'all', array(
+                'order'=>array('PostCategory.name ASC'),
+        ));
+        if(!empty($this->request->params['requested'])){
+            return $categories;
+        }
+        $titleForLayout = 'Categories index';
+        $this->set(compact('categories', 'titleForLayout'));
+    }
+
+    public function menu() {
         $categories = $this->PostCategory->find(
             'all', array(
                 'order'=>array('PostCategory.name ASC'),

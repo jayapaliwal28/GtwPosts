@@ -57,6 +57,16 @@
         }
     }
     
+    public function display($slug) {
+        $post = $this->Post->findBySlug($slug);
+        if (!$post) {
+            throw new NotFoundException(__('Invalid post'));
+        }
+        $titleForLayout = $post['Post']['title'];
+        $this->set(compact('post', 'titleForLayout'));
+        $this->render('view');
+    }
+    
     public function edit($id = null) {
         if (!$id) {
             throw new NotFoundException(__('Invalid post'));
@@ -100,6 +110,17 @@
         }
     }
     
+    public function getLatest($limit) {
+        $this->layout = false;
+        $this->autoRender = false;
+        
+        $posts = $this->Post->find('all', array(
+            'order' => 'Post.created DESC',
+            'limit' => $limit
+        ));
+        return $posts;
+    }
+    
     public function index() {
         
         if ($this->RequestHandler->isRss() ) {
@@ -137,26 +158,5 @@
         }
         $titleForLayout = $post['Post']['title'];
         $this->set(compact('post', 'titleForLayout'));
-    }
-    
-    public function display($slug) {
-        $post = $this->Post->findBySlug($slug);
-        if (!$post) {
-            throw new NotFoundException(__('Invalid post'));
-        }
-        $titleForLayout = $post['Post']['title'];
-        $this->set(compact('post', 'titleForLayout'));
-        $this->render('view');
-    }
-    
-    public function getLatest($limit) {
-        $this->layout = false;
-        $this->autoRender = false;
-        
-        $posts = $this->Post->find('all', array(
-            'order' => 'Post.created DESC',
-            'limit' => $limit
-        ));
-        return $posts;
     }
 }
