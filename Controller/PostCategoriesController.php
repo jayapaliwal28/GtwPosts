@@ -93,17 +93,13 @@
             'all', array(
                 'order'=>array('PostCategory.name ASC'),
         ));
+        if(!empty($this->request->params['requested'])){
+            return $categories;
+        }
         $titleForLayout = 'Categories index';
         $this->set(compact('categories', 'titleForLayout'));
     }
 
-    public function listall(){
-        return $this->PostCategory->find(
-            'all', array(
-                'order'=>array('PostCategory.name ASC'),
-        ));
-    }
-    
     public function view($slug) {
         $category = $this->PostCategory->findBySlug($slug);
         $titleForLayout = $category['PostCategory']['name'].' - '.$category['PostCategory']['description'];

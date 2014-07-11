@@ -8,7 +8,7 @@
     $categories = $this->requestAction(array(
         'plugin'=>'gtw_posts', 
         'controller' => 'PostCategories', 
-        'action' => 'listall'
+        'action' => 'index'
     ));
 ?>
 <h3>Categories</h3>
