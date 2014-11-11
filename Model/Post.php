@@ -20,6 +20,10 @@ class Post extends AppModel {
             )
     );
     
+    public $actsAs = array('GtwPosts.Viewable');
+    
+    public $status = array('draft' => 'Draft', 'publish' => 'Publish');
+    
     public function beforeSave($options = array()) {
         parent::beforeSave($options);
         if(!$this->data['Post']['slug']){

@@ -49,6 +49,11 @@
                 'options' => $authors,
                 'default' => $this->Session->read('Auth.User.id')
             ));
+			echo $this->Form->input('status', array(
+					'label' => 'Status',
+					'options' => $post_status,
+					'default' => 'publish'
+			));
         ?>
     </div>
 </div>

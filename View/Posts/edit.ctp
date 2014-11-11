@@ -48,6 +48,10 @@
                 'label' => 'Author',
                 'options' => $authors,
             ));
+			echo $this->Form->input('status', array(
+				'label' => 'Status',
+				'options' => $post_status
+			));
         ?>
     </div>
 </div>

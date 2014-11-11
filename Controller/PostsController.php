@@ -14,6 +14,7 @@
     public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow('view', 'index', 'display', 'getLatest');
+        $this->set('post_status', $this->Post->status);
     }
     
     public function add() {

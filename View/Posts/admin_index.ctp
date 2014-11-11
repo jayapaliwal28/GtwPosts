@@ -20,6 +20,7 @@
             <th>Id</th>
             <th>Title</th>
             <th>Author</th>
+            <th>Status</th>
             <th>Created</th>
             <th></th>
         </tr>
@@ -35,6 +36,7 @@
                 ?>
             </td>
             <td><?php echo $post['User']['first']." ".$post['User']['last']; ?></td>
+            <td><?php echo $post_status[$post['Post']['status']]; ?></td>
             <td>
                 <?php echo $post['Post']['created']; ?>
             </td>
