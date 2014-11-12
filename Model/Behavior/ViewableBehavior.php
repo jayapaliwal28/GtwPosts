@@ -66,7 +66,7 @@ class ViewableBehavior extends ModelBehavior {
 		
 		
 		$query['conditions'] = array_merge(
-	        $query['conditions'], (array)$conditions);
+	       (array) $query['conditions'], (array)$conditions);
 		
 		return $query;
 	}
