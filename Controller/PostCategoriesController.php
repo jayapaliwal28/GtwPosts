@@ -117,6 +117,7 @@
         $titleForLayout = $category['PostCategory']['name'].' - '.$category['PostCategory']['description'];
         $this->Paginator->settings = array('Post' => array(
             'fields' => array('User.*', 'Post.*'),
+        	'conditions'=> array('Post.status' => 'publish'),
             'joins' => array(
                 array(
                     'table' => 'posts_post_categories', 
